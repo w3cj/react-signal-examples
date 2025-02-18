@@ -1,4 +1,4 @@
-import { Signal, signal } from "@preact/signals-react";
+import { Signal, useSignal } from "@preact/signals-react";
 import { SignalInput } from "./components/SignalInput";
 
 function Greeting({ name }: { name: Signal<string> }) {
@@ -6,11 +6,11 @@ function Greeting({ name }: { name: Signal<string> }) {
   return <p>Hello, {name.value ? <strong>{name}!</strong> : <em>name not set...</em>}</p>;
 }
 
-const inputValue = signal("");
-const name = signal("");
 
 function App() {
   console.log("App render", Date.now());
+  const inputValue = useSignal("");
+  const name = useSignal("");
   return (
     <div>
       <h1>With Signals</h1>
